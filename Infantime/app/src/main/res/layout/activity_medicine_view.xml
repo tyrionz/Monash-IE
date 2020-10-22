@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MedicineViewActivity">
+
+
+    <TextView
+        android:id="@+id/medicineStockTitleView"
+        android:layout_width="190dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/medicine_stock_info"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/medicineDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineStockTitleView"
+        android:layout_marginStart="15sp"
+        android:text="@string/medicine_details"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/medicineNameTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineDetailTextView"
+        android:layout_alignStart="@id/medicineDetailTextView"
+        android:layout_marginTop="20sp"
+        android:text="@string/medicine_name"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/medicineNameTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineNameTitleView"
+        android:layout_alignStart="@id/medicineNameTitleView"
+        android:layout_marginTop="10sp"
+        android:text="@string/name_of_the_medicine"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/displayCurrentStockTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineNameTextValue"
+        android:layout_alignStart="@id/medicineDetailTextView"
+        android:layout_marginTop="20sp"
+        android:text="@string/stock_needed"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/displayCurrentStockValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/displayCurrentStockTitle"
+        android:layout_alignStart="@id/medicineDetailTextView"
+        android:layout_marginTop="10sp"
+        android:text="@string/current_stock"
+        android:textSize="18sp" />
+
+</RelativeLayout>

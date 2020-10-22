@@ -1,0 +1,951 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  NoBabyHospAPI:
+    Type: AWS::Serverless::Api
+    Description: Retrieve ENT PPH data and prevention tips from the database
+    Properties:
+      StageName: Dev
+      Auth:
+        ApiKeyRequired: true # sets for all methods
+      EndpointConfiguration: REGIONAL
+      
+  Test:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./hello
+      Handler: hello.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Events:
+        Test:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDisease:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDisease
+      Handler: ListDisease.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDisease:
+          Type: Api
+          Properties:
+            Path: /listDisease
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseByID
+      Handler: ListDiseaseByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseByID/{DISEASE_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseBySeason:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseBySeason
+      Handler: ListDiseaseBySeason.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseBySeason/{season}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+    
+  ListDiseaseByName:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseByName
+      Handler: ListDiseaseByName.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByName:
+          Type: Api
+          Properties:
+            Path: /listDiseaseByName/{DISEASE_NAME}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListFacilityByCatagoryAndSuburb:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListFacilityByCatagoryAndSuburb
+      Handler: ListFacilityByCatagoryAndSuburb.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByArea:
+          Type: Api
+          Properties:
+            Path: /ListFacilityByCatagoryAndSuburb/{suburb}/{catagory}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTipByType:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTipByType
+      Handler: ListTipByType.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByArea:
+          Type: Api
+          Properties:
+            Path: /listTipByType/{type}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSuburb:
+      Type: AWS::Serverless::Function
+      Properties:
+        CodeUri: ./ListSuburb
+        Handler: ListSuburb.handler_name
+        Runtime: python3.7
+        Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+        Environment:
+          Variables:
+            db_name: NoBabyHospDB
+            name: nhasAdmin
+            password: nhasBaby
+            rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+        Events:
+          ListDiseaseByArea:
+            Type: Api
+            Properties:
+              Path: /listSuburb/
+              Method: GET
+              Auth:
+                ApiKeyRequired: true
+              RestApiId: !Ref NoBabyHospAPI
+
+  ListTipByTypeAndGeneral:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTipByTypeAndGeneral
+      Handler: ListTipByTypeAndGeneral.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByArea:
+          Type: Api
+          Properties:
+            Path: /listTipByTypeAndGeneral/{type}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListCatagoryBySuburb:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListCatagoryBySuburb
+      Handler: ListCatagoryBySuburb.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseByArea:
+          Type: Api
+          Properties:
+            Path: /ListCatagoryBySuburb/{suburb}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI 
+
+  ListDiseaseSymptoms:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseSymptoms
+      Handler: ListDiseaseSymptoms.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseSymptoms:
+          Type: Api
+          Properties:
+            Path: /listDiseaseSymptoms
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+  
+  ListDiseaseSymptomsBySID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseSymptomsBySID
+      Handler: ListDiseaseSymptomsBySID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseSymptomsBySID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseSymptomsBySID/{SYM_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseSymptomsByDID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseSymptomsByDID
+      Handler: ListDiseaseSymptomsByDID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseSymptomsByDID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseSymptomsByDID/{DISEASE_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI  
+
+  ListSymptom:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSymptom
+      Handler: ListSymptom.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSymptom:
+          Type: Api
+          Properties:
+            Path: /listSymptom
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSymptomByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSymptomByID
+      Handler: ListSymptomByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSymptomByID:
+          Type: Api
+          Properties:
+            Path: /listSymptomByID/{SYM_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSymptomByDescription:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSymptomByDescription
+      Handler: ListSymptomByDescription.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        listSymptomByDescription:
+          Type: Api
+          Properties:
+            Path: /listSymptomByDescription/{SYM_DES}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+    ListSymptomByArea:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSymptomByArea
+      Handler: ListSymptomByArea.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        listSymptomByDescription:
+          Type: Api
+          Properties:
+            Path: /listSymptomByArea/{AREA_CODE}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTask:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTask
+      Handler: ListDiseaseTask.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTask:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTask
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTaskByDID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTaskByDID
+      Handler: ListDiseaseTaskByDID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTaskByDID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTaskByDID/{DISEASE_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTaskByTID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTaskByTID
+      Handler: ListDiseaseTaskByTID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTaskByTID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTaskByTID/{TASK_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTask:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTask
+      Handler: ListTask.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTask:
+          Type: Api
+          Properties:
+            Path: /listTask
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTaskByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTaskByID
+      Handler: ListTaskByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTaskByID:
+          Type: Api
+          Properties:
+            Path: /listTaskByID/{TASK_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTaskByDescription:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTaskByDescription
+      Handler: ListTaskByDescription.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTaskByDescription:
+          Type: Api
+          Properties:
+            Path: /listTaskByDescription/{TASK_DES}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTip:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTip
+      Handler: ListDiseaseTip.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTip:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTip
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseBySymptoms:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseBySymptoms
+      Handler: ListDiseaseBySymptoms.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTip:
+          Type: Api
+          Properties:
+            Path: /listDiseaseBySymptoms/{symptom}
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+
+  ListDiseaseTipByDID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTipByDID
+      Handler: ListDiseaseTipByDID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTipByDID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTipByDID/{DISEASE_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTipByTID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTipByTID
+      Handler: ListDiseaseTipByTID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTipByTID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTipByTID/{TIP_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListDiseaseTipBySeasonID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListDiseaseTipBySeasonID
+      Handler: ListDiseaseTipBySeasonID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListDiseaseTipBySeasonID:
+          Type: Api
+          Properties:
+            Path: /listDiseaseTipBySeasonID/{SEASON_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeason:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeason
+      Handler: ListSeason.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeason:
+          Type: Api
+          Properties:
+            Path: /listSeason
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeasonByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonByID
+      Handler: ListSeasonByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonByID:
+          Type: Api
+          Properties:
+            Path: /listSeasonByID/{SEASON_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeasonByName:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonByName
+      Handler: ListSeasonByName.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonByName:
+          Type: Api
+          Properties:
+            Path: /listSeasonByName/{SEASON_NAME}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+  
+  ListTip:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTip
+      Handler: ListTip.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTip:
+          Type: Api
+          Properties:
+            Path: /listTip
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTipByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTipByID
+      Handler: ListTipByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTipByID:
+          Type: Api
+          Properties:
+            Path: /listTipByID/{TIP_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListTipByDescription:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListTipByDescription
+      Handler: ListTipByDescription.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListTipByDescription:
+          Type: Api
+          Properties:
+            Path: /listTipByDescription/{TIP_DES}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeasonENTData:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonENTData
+      Handler: ListSeasonENTData.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        listSeasonENTData:
+          Type: Api
+          Properties:
+            Path: /listSeasonENTData
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeasonENTDataBySeasonID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonENTDataBySeasonID
+      Handler: ListSeasonENTDataBySeasonID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataBySeasonID:
+          Type: Api
+          Properties:
+            Path: /listSeasonENTDataBySeasonID/{SEASON_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListSeasonENTDataBySeasonID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonENTDataBySeasonID
+      Handler: ListSeasonENTDataBySeasonID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataBySeasonID:
+          Type: Api
+          Properties:
+            Path: /listSeasonENTDataBySeasonID/{SEASON_ID}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+    
+  ListSeasonENTDataByAdmissionNumber:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListSeasonENTDataByAdmissionNumber
+      Handler: ListSeasonENTDataByAdmissionNumber.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataByAdmissionNumber:
+          Type: Api
+          Properties:
+            Path: /listSeasonENTDataByAdmissionNumber/{ADMIN_NUM}/
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListArea:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListArea
+      Handler: ListArea.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataByAdmissionNumber:
+          Type: Api
+          Properties:
+            Path: /listArea
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListAreaByID:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListAreaByID
+      Handler: ListAreaByID.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataByAdmissionNumber:
+          Type: Api
+          Properties:
+            Path: /listAreaByID/{AREA_ID}
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+
+  ListAreaByDescription:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ListAreaByDescription
+      Handler: ListAreaByDescription.handler_name
+      Runtime: python3.7
+      Role: arn:aws:iam::034350288680:role/lambda-vpc-role
+      Environment:
+        Variables:
+          db_name: NoBabyHospDB
+          name: nhasAdmin
+          password: nhasBaby
+          rds_host: nhas-nobabyhosp.cf4yzwjind5x.us-east-1.rds.amazonaws.com
+      Events:
+        ListSeasonENTDataByAdmissionNumber:
+          Type: Api
+          Properties:
+            Path: /listAreaByDescription/{AREA_DES}
+            Method: GET
+            Auth:
+              ApiKeyRequired: true
+            RestApiId: !Ref NoBabyHospAPI
+        
+        

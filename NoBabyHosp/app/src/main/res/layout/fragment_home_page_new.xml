@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/homeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/home_page"
+            android:textColor="#009688"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aqiCardView"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#42D5C7">
+
+                <TextView
+                    android:id="@+id/aqiLocationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/melbourne"
+                    android:textColor="#E91E63"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_toLeftOf="@+id/aqiImageView"/>
+
+                <TextView
+                    android:id="@+id/aqiTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aqiLocationTextView"
+                    android:layout_marginStart="20dp"
+                    android:scrollbarSize="4sp"
+                    android:text="@string/air_quality_aqi"
+                    android:textColor="#E91E63"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/aqiTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aqiTitleTextView"
+                    android:layout_alignLeft="@id/aqiTitleTextView"
+                    android:layout_marginLeft="10sp"
+                    android:text="@string/loading_filler"
+                    android:textColor="#FFEB3B"
+                    android:textSize="52sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/aqiLevelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/aqiTextView"
+                    android:layout_toRightOf="@id/aqiTextView"
+                    android:text="@string/loading_filler"
+                    android:textColor="#FFEB3B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/aqiImageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/aqiTitleTextView"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="23dp"
+                    android:layout_toLeftOf="@id/aqiImageView"
+                    android:contentDescription="@string/image_aqi"
+                    android:src="@drawable/aqi" />
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aqiImageView"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="30sp"
+                    android:text="@string/_3_42_p_m"
+                    android:textColor="#E91E63"
+                    android:textSize="28sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/warningTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/aqiLevelTextView"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="30sp"
+                    android:text="@string/text_out"
+                    android:textColor="#E91E63"
+                    android:textSize="12sp"
+                    android:textStyle="italic|bold" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/taskCardView"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ECA4BC">
+
+                <TextView
+                    android:id="@+id/taskWarningTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/the_next_due_date"
+                    android:textColor="#E91E63"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/taskNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/taskWarningTitleTextView"
+                    android:layout_toLeftOf="@id/taskImageView"
+                    android:layout_alignLeft="@id/taskWarningTitleTextView"
+                    android:scrollbarSize="4sp"
+                    android:text="@string/task_name"
+                    android:textColor="#E91E63"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/taskDateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/taskNameTextView"
+                    android:layout_alignLeft="@id/taskWarningTitleTextView"
+                    android:text="@string/_20_10"
+                    android:textColor="#FFEB3B"
+                    android:textSize="35sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/taskDateTextView"
+                    android:layout_toRightOf="@id/taskDateTextView"
+                    android:text="@string/_2020"
+                    android:textColor="#FFEB3B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/taskImageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="23dp"
+                    android:contentDescription="@string/icon_warning"
+                    android:src="@drawable/task_new" />
+
+
+                <TextView
+                    android:id="@+id/checkTaskTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/taskImageView"
+                    android:layout_alignRight="@id/taskImageView"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginEnd="1dp"
+                    android:text="@string/task_alert"
+                    android:textColor="#E91E63"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/taskDueWatningTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkTaskTextView"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="30sp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/_3_more_tasks_to_do"
+                    android:textColor="#E91E63"
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/medicalStockCardView"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#CDDC39"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/medicineRestockTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/medicineStockTitleString"
+                    android:textColor="#E91E63"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/medicineImageView"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toEndOf="@+id/medicineRestockTitleTextView"
+                    app:srcCompat="@drawable/medicine_stock_manage" />
+
+                <TextView
+                    android:id="@+id/medicineNameTextView"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/medicineRestockTitleTextView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Medicine Name"
+                    android:textColor="#E91E63"
+                    android:textSize="14sp"
+                    tools:layout_width="wrap_content"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/expiryDateFieldTitleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20sp"
+                    android:layout_below="@id/medicineNameTextView"
+                    android:text="Expiry Date"
+                    android:textSize="18sp"
+                    android:textColor="#E91E63"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

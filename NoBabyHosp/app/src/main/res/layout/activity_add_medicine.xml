@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddMedicineActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/navbar_top"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:menu="@menu/navbar_top"/>
+
+    <TextView
+        android:id="@+id/addMedicineTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navbar_top"
+        android:layout_alignLeft="@id/currentStockTitleView"
+        android:text="Add Medicine Details"
+        android:layout_toLeftOf="@id/medicineCabinetView"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/medicineCabinetView"
+        android:layout_width="160dp"
+        android:layout_height="140dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/navbar_top"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        tools:srcCompat="@drawable/medicine_cabinet" />
+
+    <TextView
+        android:id="@+id/medicineNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_alignLeft="@id/expiryDateFieldTitleView"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineCabinetView"
+        android:text="Medicine Name"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/medicineNameTextView"
+        android:layout_below="@id/medicineNameTextView"
+        android:textColor="@android:color/black"
+        android:hint="Medicine name"/>
+
+
+
+    <TextView
+        android:id="@+id/expiryDateFieldTitleView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Expiry Date"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_below="@id/nameEditText"/>
+
+    <EditText
+        android:id="@+id/expiryDateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="MM/YYYY"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_alignLeft="@id/expiryDateFieldTitleView"
+        android:layout_below="@id/expiryDateFieldTitleView"
+        android:textColor="@android:color/black"
+        android:visibility="visible"
+        tools:outlineProvider="background" />
+
+
+    <TextView
+        android:id="@+id/currentStockTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Stock"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/expiryDateEditText"
+        android:layout_alignLeft="@id/expiryDateFieldTitleView"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/stockNumberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/currentStockTitleView"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_below="@id/currentStockTitleView"/>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40sp"
+        android:layout_below="@id/stockNumberEditText"
+        android:text="Save" />
+
+</RelativeLayout>

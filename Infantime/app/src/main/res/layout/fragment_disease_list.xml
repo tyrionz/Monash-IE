@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/searchDiseaseTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filter_by_symptom"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20sp"
+        android:layout_marginStart="20sp"/>
+
+    <Spinner
+        android:id="@+id/symptomSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchDiseaseTitleTextView"
+        android:layout_alignStart="@id/searchDiseaseTitleTextView"
+        android:layout_marginTop="10sp" />
+
+    <TextView
+        android:id="@+id/possibleDiseaseTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/possible_diseases"
+        android:layout_below="@+id/symptomSpinner"
+        android:layout_alignStart="@id/searchDiseaseTitleTextView"
+        android:layout_marginTop="30sp"
+        android:textSize="18sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/diseaseRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/possibleDiseaseTitleTextView"
+        android:layout_marginTop="10sp" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        shimmer:duration="800"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10sp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/possibleDiseaseTitleTextView"
+        tools:layout_editor_absoluteX="470dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+            <include layout="@layout/shimmer_placeholder_disease" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+</RelativeLayout>

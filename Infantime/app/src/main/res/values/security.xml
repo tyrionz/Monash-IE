@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="entinfokey">WqBguqukRz5U2UokjHXxD1JFHk6OQKS62d2WHvw4</string>
+    <string name="aqikey">793555a685454d5bed6179dc3abe21b241a372ae</string>
+    <string name="weatherkey">de7d8d9ceed240dfc078b8e34792fee2</string>
+    <string name="geocodekey">AIzaSyAwFSfOHfwHbDkweHyiTDe8QXceiPhGzII</string>
+</resources>

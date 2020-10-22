@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.AddInternationalTripActivity">
+
+    <TextView
+        android:id="@+id/addTripTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/travelling_to"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <EditText
+        android:id="@+id/locationEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addTripTitleTextView"
+        android:layout_alignStart="@id/addTripTitleTextView"
+        android:hint="@string/input_overseas_city_names"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20sp"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/dateOfTravelTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/date_of_travel"
+        android:layout_below="@id/locationEditText"
+        android:layout_alignStart="@id/addTripTitleTextView"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:id="@+id/dateOfTravelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_to_select_date"
+        android:textSize="18sp"
+        android:layout_below="@id/dateOfTravelTitleTextView"
+        android:layout_alignStart="@id/dateOfTravelTitleTextView"
+        android:layout_marginTop="10sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
+
+    <TextView
+        android:id="@+id/modeOfTravelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mode_of_travel"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/dateOfTravelTextView"
+        android:layout_alignStart="@id/dateOfTravelTextView"
+        android:layout_marginTop="20sp" />
+
+    <RadioGroup
+        android:id="@+id/travelRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/modeOfTravelTextView"
+        android:layout_alignStart="@id/modeOfTravelTextView"
+        android:layout_marginTop="10sp">
+
+        <RadioButton
+            android:id="@+id/airRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/air"/>
+
+        <RadioButton
+            android:id="@+id/boatRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/boat"/>
+
+        <RadioButton
+            android:id="@+id/roadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/road"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/generateCheckListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/travelRadioGroup"
+        android:layout_marginTop="23dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        android:text="@string/check_medicine" />
+
+
+</RelativeLayout>

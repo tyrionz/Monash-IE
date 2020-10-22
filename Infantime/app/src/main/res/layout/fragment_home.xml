@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="5sp"
+        android:layout_weight="1"
+        android:id="@+id/aqiCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:id="@+id/aqiLocationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toStartOf="@+id/aqiImageView"
+                android:text="@string/location"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/aqiSubtitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aqiLocationTextView"
+                android:layout_marginStart="20dp"
+                android:scrollbarSize="4sp"
+                android:text="@string/air_quality"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/aqiTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aqiSubtitleTextView"
+                android:layout_alignStart="@id/aqiSubtitleTextView"
+                android:layout_marginStart="10sp"
+                android:text="@string/loading_filler"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="52sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/aqiLevelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/aqiTextView"
+                android:layout_toEndOf="@id/aqiTextView"
+                android:text="@string/loading_filler"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/aqiImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/aqiSubtitleTextView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="23dp"
+                android:layout_toStartOf="@id/aqiImageView"
+                android:contentDescription="@string/aqi_image"
+                android:src="@drawable/aqi" />
+
+
+            <TextView
+                android:id="@+id/aqiWarningTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aqiTextView"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_toStartOf="@id/activityButton"
+                android:text="@string/loading_data"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/activityButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5sp"
+                android:text="@string/local_travel"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_weight="1"
+        android:id="@+id/tripCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSecondaryVariant">
+
+            <TextView
+                android:id="@+id/tripTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toStartOf="@id/imageView"
+                android:text="@string/upcoming_trip"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/upcomingTripTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tripTitleTextView"
+                android:layout_alignStart="@id/tripTitleTextView"
+                android:layout_marginTop="20sp"
+                android:text="@string/no_trip_found"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tripDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upcomingTripTextView"
+                android:layout_alignStart="@id/tripTitleTextView"
+                android:text="@string/loading_filler"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"
+                android:layout_marginTop="20sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/tripButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/schedule_trip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="23dp"
+                android:contentDescription="@string/cartoon_image_of_a_plane"
+                app:srcCompat="@drawable/images" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

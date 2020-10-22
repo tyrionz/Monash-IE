@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.AddMedicineActivity">
+
+    <TextView
+        android:id="@+id/medicineTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:text="@string/medicine_name"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/medicineNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/medicineTitleTextView"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="20sp"
+        android:hint="@string/input_name_of_medicine"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/expiryDateTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicineNameEditText"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:text="@string/dosage_per_day"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/dosageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expiryDateTitleTextView"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"
+        android:textSize="15sp"
+        android:layout_marginEnd="20sp"
+        android:hint="@string/enter_the_dosage"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/quantityTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dosageEditText"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:text="@string/quantity_needed"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantityTitleTextView"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/quantity_needed"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityTextView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/save"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

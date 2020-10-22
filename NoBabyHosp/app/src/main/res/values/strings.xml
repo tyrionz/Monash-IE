@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">NoBabyHosp</string>
+    <string name="title_activity_nav_home">NoBabyHosp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">NoBabyHosp</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">NoBabyHosp</string>
+    <string name="action_settings">Settings</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="button_check_warnings">Check it now</string>
+    <string name="welcome_message">Welcome Kevin!</string>
+    <string name="text_season_warning">You have one seasonal warning!</string>
+    <string name="text_task_warning">Loading Task list....</string>
+    <string name="button_ignore">Ignore all</string>
+    <string name="image_profile_pic">profile_pic</string>
+    <string name="icon_warning">icon_warning</string>
+    <string name="image_logo">image_logo</string>
+    <string name="image_boy">image_boy</string>
+    <string name="image_girl">image_girl</string>
+    <string name="baby_ear">baby_ear</string>
+    <string name="radiobutton_boy">It\'s a boy</string>
+    <string name="radiobutton_girl">It\'s a girl</string>
+    <string name="button_start">Start</string>
+    <string name="text_vername">beta 1.0</string>
+    <string name="hint_name">Please input your baby\'s name</string>
+    <string name="text_choose_age">Please choose age for your baby</string>
+    <string name="text_input_name">Please input your baby\'s name</string>
+    <string name="image_location">image_location</string>
+    <string name="text_date_temp_info"> Melbourne,27/08/2020,14℃ ,Air quality Good:)</string>
+    <string name="info_screen_name">Diseases</string>
+    <string name="enter_symptom">Please enter the symptom if not available in the list</string>
+    <string name="disease_info">Disease Info</string>
+    <string name="DiseaseName">You may find symptoms like:</string>
+    <string name="SaveForLater">Save for Later</string>
+    <string name="BackToInfoScreen">Back</string>
+    <string name="DiseaseDetails">Disease Details</string>
+    <string name="baby_health">baby_health</string>
+
+    <string name="text_display_list"> Please confirm the date and task list</string>
+    <string name="button_check_list">Confirm</string>
+    <string name="text_assign_date">This list has been assigned to a completion date:</string>
+    <string name="text_due_date">10/10/2020:</string>
+    <string name="image_todolist">image_todolist</string>
+    <string name="text_sorry_no_assign"> Sorry, you haven\'t assign your list to a completion date.</string>
+    <string name="button_assign_task">Assign</string>
+    <string name="button_complete">Complete</string>
+    <string name="button_import_to_calendar">Add to calendar</string>
+    <string name="button_assign">Assign</string>
+    <string name="text_request_assign">Please assign your task to a completion date</string>
+    <string name="task_name"> Task Name</string>
+    <string name="text_choose_reason"> Please choose the reason for the task</string>
+    <string name="image_task">image_task</string>
+    <string name="submitBtn">Submit</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_info">Tips &amp; Info</string>
+    <string name="menu_task">Tasks</string>
+    <string name="menu_stock">Stock</string>
+    <string name="menu_setting">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="melbourne_27_08_2020_14_air_quality_good">Melbourne,27/08/2020,14℃ ,Air quality Good</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="pick_a_symptom_to_search">Pick a symptom to search</string>
+    <string name="purpose">Purpose</string>
+    <string name="scroll_down_to_view_more">Scroll down to view more</string>
+    <string name="test">test</string>
+    <string name="tip_text">Tip Text</string>
+    <string name="add_info_text">Additional informaiton you may concern</string>
+    <string name="add_info_title">More Info</string>
+    <string name="image_add_info">image_add_info</string>
+
+    <string name="home_page">Home page</string>
+    <string name="baby1">Baby1</string>
+    <string name="baby2">Baby2</string>
+    <string name="image_baby1">image_baby1</string>
+    <string name="image_baby2">image_baby2</string>
+    <string name="melbourne">Melbourne</string>
+    <string name="loading_filler">- -</string>
+    <string name="_34">34</string>
+    <string name="_3_42_p_m">3:42 P.M.</string>
+    <string name="air_quality_aqi">Air Quality-AQI</string>
+    <string name="image_aqi">image_aqi</string>
+    <string name="good">Good</string>
+    <string name="text_out">Loading AQI information....</string>
+    <string name="the_next_due_date">Task due today</string>
+    <string name="task_alert">View Tasks</string>
+    <string name="_2020">/2020</string>
+    <string name="_20_10">20/10</string>
+    <string name="medicineStockTitleString">Medicine Stock</string>
+    <string name="medicineRefillWarningTitleTextView">The medicine needs to be restocked.</string>
+    <string name="_3_more_tasks_to_do">You have done everything!</string>
+    <string name="add_para1">ENT infection is the top 1 health problem that leads infants to hospitalisation.</string>
+    <string name="add_para2"> Infant age group (0-4 years) consists of 40% of all ENT hospitalisation.</string>
+    <string name="add_para3"> In all infant ENT infections, 57.5% of the chance that is a boy whereas 42.5% of the chance that is a girl.</string>
+    <string name="add_para4">Your infants are more likely to catch Nose or Throat infections during Winter than summer. The lack of moisture in the air can dry out the membranes in our noses, causing mucus to thicken, and potentially leading to congestion, blocked sinuses, and infection.</string>
+    <string name="additional_info">Additional Info</string>
+    <string name="add_para5">Your infants are more likely to catch Ear infections during Summer than winter. This is due to the fact that people sweat more often during summer.
+</string>
+    <string name="add_para6">There has been a constant increase in ENT infections over the past few years.</string>
+    <string name="add_para7">The more remote you live from the major cities, the more likely you are to get an ENT infection and the likelihood can be as high as double.</string>
+    <string name="add_para8">The higher the socioeconomic status, the lower the chance of getting an ENT infection.</string>
+    <string name="additional_infomation">Additional Infomation</string>
+</resources>
